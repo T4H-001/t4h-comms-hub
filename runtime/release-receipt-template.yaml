@@ -1,0 +1,33 @@
+status: PARTIAL
+receipt_type: release_deployment
+app: t4h-comms-hub
+source:
+  repo: TML-4PM/t4h-comms-hub
+  branch: main
+  commit_sha: REQUIRED
+build:
+  provider: GitHub Actions
+  workflow: REQUIRED
+  run_id: REQUIRED
+  status: REQUIRED
+vercel:
+  project: t4h-comms-hub
+  project_id: prj_XAlUpR9lwEKRc7S9jgfQlezFAgiF
+  deployment_id: REQUIRED
+  preview_url: REQUIRED
+  production_url: https://t4h-comms-hub.vercel.app
+smoke_test:
+  status: REQUIRED
+  checked_at: REQUIRED
+  routes:
+    - path: /
+      expected_status: 200
+      actual_status: REQUIRED
+ledger:
+  reality_ledger_updated: REQUIRED
+  receipt_path: REQUIRED
+gaps:
+  - replace REQUIRED fields during release
+next_action:
+  - attach receipt to PR or commit
+score: 0.70
